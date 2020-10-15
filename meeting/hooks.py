@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
-from _future_ import unicode_literals
-from . import _version_ as app_version
+from __future__ import unicode_literals
+from . import __version__ as app_version
+
 app_name = "meeting"
 app_title = "Meeting"
 app_publisher = "Bantoo"
@@ -40,7 +40,8 @@ app_license = "MIT"
 # Generators
 # ----------
 # automatically create page for each record of this doctype
-#website_generators = ["Meeting"]
+website_generators = ["Meeting"]
+
 # Installation
 # ------------
 # before_install = "meeting.install.before_install"

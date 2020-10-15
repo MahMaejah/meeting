@@ -1,5 +1,5 @@
 # Copyright (c) 2020, Bantoo Dev Zambia
-from _future_ import unicode_literals
+from __future__ import unicode_literals
 import frappe
 from frappe import _
 from frappe.model.document import Document
@@ -12,8 +12,8 @@ class Meeting(WebsiteGenerator):
     )
 
     def validate(self):
-		self.page_name = self.name.lower()
-        self.validate_attendees()
+        self.page_name = self.name.lower()
+        #self.validate_attendees()
         """Set missing names and warn if duplicate"""
         found = []
         for attendee in self.attendees:
@@ -24,8 +24,6 @@ class Meeting(WebsiteGenerator):
                     ("Attendee{0 entered twice}").format(attendee.attendee))
             found.append(attendee.attendee)
 
-
-@frappe.whitelist()
-def get_full_name(attendee):
-    user = frappe.get_doc("User", attendee)
-    return " ".join(filter(None, [user.first_name, user.middle_name, user.last_name]))
+        def get_full_name(attendee):
+            self = frappe.get_doc("User")
+            return " ".join(filter(None, [self.first_name, self.middle_name, self.last_name]))
